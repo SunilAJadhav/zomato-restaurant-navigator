@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Checkbox from 'rc-checkbox';
 import PropTypes from 'prop-types';
+import {ColumnTitle, CheckboxContainer} from '../../styles/CheckboxListStyles';
 
 class CheckboxList extends Component {
 
@@ -15,14 +16,16 @@ class CheckboxList extends Component {
 
     return (
       <div>
-        <h2>{title}</h2>
+        <ColumnTitle>{title}</ColumnTitle>
         <div>
           {list.map(({ id, name }, index) => {
             return (
-                <label key={"name"+index}>
-                    <Checkbox key={id}>{name}</Checkbox>
-                    {name}
-              </label>
+              <CheckboxContainer>
+                  <label key={"name"+index}>
+                      <Checkbox key={id}>{name}</Checkbox>
+                      {name}
+                </label>
+                </CheckboxContainer>
             );
           })}
         </div>

@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
     background: #333;
     font-size: 14px;
     line-height: 20px;
-    text-align: center;
     background-color: #FFFFFF;
     font-family: 'RobotoRegular','Roboto','Droid Sans','Helvetica Neue','Segoe UI','Segoe','Open Sans','Helvetica','Arial',sans serif;
   }
