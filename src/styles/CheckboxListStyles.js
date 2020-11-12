@@ -8,3 +8,11 @@ export const ColumnTitle = styled.h2`
 export const CheckboxContainer = styled.div`
     padding-bottom: 15px;
 `;
+
+export const CousineListGrid = styled.div`
+   display: grid;
+    width: 405px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 141px;
+    overflow: hidden;
+`;

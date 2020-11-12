@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Checkbox from 'rc-checkbox';
 import PropTypes from 'prop-types';
-import {ColumnTitle, CheckboxContainer} from '../../styles/CheckboxListStyles';
+import {ColumnTitle, CheckboxContainer, CousineListGrid} from '../../styles/CheckboxListStyles';
 
 class CheckboxList extends Component {
 
@@ -12,12 +12,28 @@ class CheckboxList extends Component {
   };
 
   render() {
-    const { title, list } = this.props;
+    const { title, list, isColumnLayout } = this.props;
+
 
     return (
       <div>
         <ColumnTitle>{title}</ColumnTitle>
-        <div>
+        {
+        isColumnLayout && <CousineListGrid>
+          {list.map(({ id, name }, index) => {
+            return (
+              <CheckboxContainer>
+                  <label key={"name"+index}>
+                      <Checkbox key={id}>{name}</Checkbox>
+                      {name}
+                </label>
+                </CheckboxContainer>
+            );
+          })}
+        </CousineListGrid>
+        }
+         {
+        !isColumnLayout && <div>
           {list.map(({ id, name }, index) => {
             return (
               <CheckboxContainer>
@@ -29,6 +45,8 @@ class CheckboxList extends Component {
             );
           })}
         </div>
+        }
+
       </div>
     );
   }

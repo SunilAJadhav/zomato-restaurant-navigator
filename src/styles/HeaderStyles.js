@@ -14,3 +14,12 @@ export const SortList = styled.div`
     display: flex;
     flex-direction: row;
 `;
+
+
+export const CategoriesList = styled.div`
+   padding-right: 20px;
+`;
+
+
+
+
