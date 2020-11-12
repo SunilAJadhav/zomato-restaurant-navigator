@@ -1,13 +1,17 @@
 import React from 'react';
 import { withRestaurants } from '../providers/RestaurantInfoProvider';
+import CheckboxList from './common/CheckboxList';
 
-const HeaderNav = ({ categoriesList}) => (
+const HeaderNav = ({ categoriesList, cuisinesList,}) => (
     <div>
-    {categoriesList.map(({ id, name }) => {
-      return (
-          <div id={id}>{name}</div>
-      );
-    })}
+      <CheckboxList
+        list={categoriesList}
+        title="Categories"
+      />
+        <CheckboxList
+        list={cuisinesList}
+        title="Cuisine"
+      />
   </div>
 );
 

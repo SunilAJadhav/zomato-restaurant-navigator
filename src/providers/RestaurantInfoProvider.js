@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCategories } from '../services/restaurantInfoService';
+import { getCategories, getCuisines } from '../services/restaurantInfoService';
 
 const RestaurantContext = React.createContext();
 
@@ -8,6 +8,7 @@ export const withRestaurants = WrappedComponent => props => (
     {restaurantContext => (
       <WrappedComponent
          categoriesList={restaurantContext.categoriesList}
+         cuisinesList={restaurantContext.cuisinesList}
         {...props}
       />
     )}
@@ -17,7 +18,8 @@ export const withRestaurants = WrappedComponent => props => (
 class RestaurantInfoProvider extends Component {
 
   state = {
-    categoriesList: []
+    categoriesList: [],
+    cuisinesList: [],
   };
 
   componentDidMount() {
@@ -25,20 +27,23 @@ class RestaurantInfoProvider extends Component {
   }
 
   async getLocationInfo() {
-    const [categoriesList] = await Promise.all([
-        getCategories()
+    const [categoriesList, cuisinesList] = await Promise.all([
+        getCategories(),
+        getCuisines()
       ]);
-    this.setState({ categoriesList });
+    this.setState({ categoriesList, cuisinesList });
   }
 
   render() {
     const {
-      categoriesList
+      categoriesList,
+      cuisinesList,
     } = this.state;
     return (
       <RestaurantContext.Provider
         value={{
           categoriesList,
+          cuisinesList,
         }}
       >
         {this.props.children}
