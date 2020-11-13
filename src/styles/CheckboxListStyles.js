@@ -6,7 +6,12 @@ export const ColumnTitle = styled.h2`
 `;
 
 export const CheckboxContainer = styled.div`
-    padding-bottom: 15px;
+    flex: 0 0 auto;
+
+    @media (min-width: 46.25em) {
+        flex-basis: 33.33333333%;
+        max-width: 33.33333333%;
+    }
 `;
 
 export const CousineListGrid = styled.div`

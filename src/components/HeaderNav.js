@@ -1,25 +1,29 @@
 import React from 'react';
 import { withRestaurants } from '../providers/RestaurantInfoProvider';
 import CheckboxList from './common/CheckboxList';
-import {HeaderContainer, SortList, CategoriesList} from '../styles/HeaderStyles';
+import {HeaderContainer, GridRow, ContentContainer} from '../styles/HeaderStyles';
 
-const HeaderNav = ({ categoriesList, cuisinesList,}) => (
-    <HeaderContainer>
-          <SortList>
-              <CategoriesList>
+const HeaderNav = ({ categoriesList, cuisinesList, toggleCategory, toggleCuisine, activeCategories, activeCuisines}) => (
+    <ContentContainer>
+        <HeaderContainer>
+            <GridRow>
                     <CheckboxList
                         list={categoriesList}
                         isColumnLayout = {false}
                         title="Categories"
+                        activeItems={activeCategories}
+                        toggleSelect={toggleCategory}
                     />
-                </CategoriesList>
-                <CheckboxList
-                    list={cuisinesList}
-                    isColumnLayout = {true}
-                    title="Cuisine"
-                />
-            </SortList>
-  </HeaderContainer>
+                    <CheckboxList
+                        list={cuisinesList.slice(0, 12)}
+                        isColumnLayout = {true}
+                        title="Cuisine"
+                        activeItems={activeCuisines}
+                        toggleSelect={toggleCuisine}
+                    />
+                </GridRow>
+    </HeaderContainer>
+  </ContentContainer>
 );
 
 export default withRestaurants(HeaderNav);

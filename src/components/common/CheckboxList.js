@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Checkbox from 'rc-checkbox';
 import PropTypes from 'prop-types';
-import {ColumnTitle, CheckboxContainer, CousineListGrid} from '../../styles/CheckboxListStyles';
+import {ColumnTitle, CheckboxContainer} from '../../styles/CheckboxListStyles';
+import { GridCol, CousineList} from '../../styles/HeaderStyles';
 
 class CheckboxList extends Component {
 
@@ -12,42 +13,41 @@ class CheckboxList extends Component {
   };
 
   render() {
-    const { title, list, isColumnLayout } = this.props;
-
+    const { title, list, isColumnLayout, toggleSelect } = this.props;
 
     return (
-      <div>
+      <GridCol>
         <ColumnTitle>{title}</ColumnTitle>
         {
-        isColumnLayout && <CousineListGrid>
+        isColumnLayout && <CousineList>
           {list.map(({ id, name }, index) => {
             return (
               <CheckboxContainer>
-                  <label key={"name"+index}>
-                      <Checkbox key={id}>{name}</Checkbox>
+                  <label key={`name`+index}>
+                      <Checkbox key={id}  onClick={() => toggleSelect(id)}>{name}</Checkbox>
                       {name}
                 </label>
                 </CheckboxContainer>
             );
           })}
-        </CousineListGrid>
+        </CousineList>
         }
          {
-        !isColumnLayout && <div>
+        !isColumnLayout && <GridCol>
           {list.map(({ id, name }, index) => {
             return (
-              <CheckboxContainer>
-                  <label key={"name"+index}>
-                      <Checkbox key={id}>{name}</Checkbox>
+              <div>
+                  <label key={`nameid`+index}>
+                      <Checkbox key={id}  onClick={() => toggleSelect(id)}>{name}</Checkbox>
                       {name}
                 </label>
-                </CheckboxContainer>
+                </div>
             );
           })}
-        </div>
+        </GridCol>
         }
 
-      </div>
+      </GridCol>
     );
   }
 }
