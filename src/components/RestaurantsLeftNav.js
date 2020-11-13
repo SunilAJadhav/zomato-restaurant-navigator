@@ -1,8 +1,9 @@
 import React from 'react';
 import { withRestaurants } from '../providers/RestaurantInfoProvider';
+import {RestaurantContainer} from '../styles/resteaurantViewStyles';
 
 const RestaurantsLeftNav = ({ restaurantList, toggleActiveRestaurant, activeCost, activeRating, selectedRestaurant }) => (
-  <section>
+  <RestaurantContainer>
     <h2>Results</h2>
     <ul>
       {restaurantList.map((restaurant) => {
@@ -16,7 +17,7 @@ const RestaurantsLeftNav = ({ restaurantList, toggleActiveRestaurant, activeCost
         );
       })}
     </ul>
-  </section>
+  </RestaurantContainer>
 );
 
 export default withRestaurants(RestaurantsLeftNav);

@@ -2,10 +2,6 @@ import styled from 'styled-components';
 
 export const ContentContainer = styled.div`
     @media (min-width: 46.25em) {
-        position: fixed;
-        height: 200px;
-        top: 0;
-        left: 0;
         width: 100%;
         z-index: 1;
     }
@@ -63,4 +59,11 @@ export const GridCol6 = styled.div`
         flex-basis: 50%;
         max-width: 50%;
     }
+`;
+
+export const MainContainer = styled.div`
+    height: calc(100% - 161px);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
 `;

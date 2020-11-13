@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { withRestaurants } from '../providers/RestaurantInfoProvider';
+import {RestaurantDetails, ImageDisplay} from '../styles/resteaurantViewStyles';
 
 const RestaurantDetailsView = ({ activeRestaurant }) => {
   const {
@@ -13,14 +14,14 @@ const RestaurantDetailsView = ({ activeRestaurant }) => {
     phone,
   } = activeRestaurant;
   return (
-    <section>
+    <RestaurantDetails>
       {Object.keys(activeRestaurant).length === 0 ? (
         <h1>Select a restaurant</h1>
       ) : (
         <Fragment>
-          <div>
+          <ImageDisplay>
             <img src={image} alt={name} />
-          </div>
+          </ImageDisplay>
           <div>
             <h1>{name}</h1>
             <h3>{address}</h3>
@@ -56,7 +57,7 @@ const RestaurantDetailsView = ({ activeRestaurant }) => {
           </div>
         </Fragment>
       )}
-    </section>
+    </RestaurantDetails>
   );
 };
 

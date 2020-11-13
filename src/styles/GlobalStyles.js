@@ -16,7 +16,19 @@ const GlobalStyles = createGlobalStyle`
 }
 
 img {
-  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+
+ul li{
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 html,
@@ -25,3 +37,4 @@ body {
 }
 `
 export default GlobalStyles;
+
