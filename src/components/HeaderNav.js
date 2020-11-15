@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRestaurants } from '../providers/RestaurantInfoProvider';
 import CheckboxList from './common/CheckboxList';
+import CostSlider from './CostSlider';
+import RatingSlider from './RatingSlider';
 import {HeaderContainer, GridRow, ContentContainer} from '../styles/HeaderStyles';
 
 const HeaderNav = ({ categoriesList, cuisinesList, toggleCategory, toggleCuisine, activeCategories, activeCuisines}) => (
@@ -21,6 +23,10 @@ const HeaderNav = ({ categoriesList, cuisinesList, toggleCategory, toggleCuisine
                         activeItems={activeCuisines}
                         toggleSelect={toggleCuisine}
                     />
+                     <div className="sliders">
+                            <RatingSlider />
+                            <CostSlider />
+                        </div>
                 </GridRow>
     </HeaderContainer>
   </ContentContainer>

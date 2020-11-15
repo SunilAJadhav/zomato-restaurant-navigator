@@ -1,59 +1,65 @@
 import React, { Fragment } from 'react';
 import { withRestaurants } from '../providers/RestaurantInfoProvider';
-import {RestaurantDetails, ImageDisplay} from '../styles/resteaurantViewStyles';
+import {
+  RestaurantDetails, 
+  ImageDisplay, 
+  Heading1, 
+  Heading3,
+  Heading4,
+  OpenStatus,
+  CloseStatus,
+  WrongICon,
+  RightICon,
+  PhoneContainer,
+  OpenCloseContainer,
+  TextDetailedViewHeader
+} from '../styles/resteaurantViewStyles';
 
 const RestaurantDetailsView = ({ activeRestaurant }) => {
-  const {
-    name,
-    hasDelivery,
-    hasBooking,
-    cuisines,
-    address,
-    image,
-    isOpen,
-    phone,
-  } = activeRestaurant;
+  console.log(activeRestaurant);
   return (
     <RestaurantDetails>
       {Object.keys(activeRestaurant).length === 0 ? (
-        <h1>Select a restaurant</h1>
+        <h1>Please select a restaurant...</h1>
       ) : (
         <Fragment>
           <ImageDisplay>
-            <img src={image} alt={name} />
+            <img src={activeRestaurant.image} alt={activeRestaurant.name} />
           </ImageDisplay>
           <div>
-            <h1>{name}</h1>
-            <h3>{address}</h3>
+            <Heading1>{activeRestaurant.name}</Heading1>
+            <Heading3>{activeRestaurant.address}</Heading3>
 
-            {hasBooking ? (
-              <p>Bookings available</p>
+            {activeRestaurant.hasBooking ? (
+              <p><RightICon>&#10004;</RightICon> Bookings available</p>
             ) : (
-              <p>No bookings</p>
+              <p><WrongICon>&#10006;</WrongICon>No bookings</p>
             )}
 
-            {hasDelivery ? (
-              <p>Delivery available</p>
+            {activeRestaurant.hasDelivery ? (
+              <p><RightICon>&#10004;</RightICon> Delivery available</p>
             ) : (
-              <p>No delivery</p>
+              <p><WrongICon>&#10006;</WrongICon>No delivery</p>
             )}
 
-            <span>Cuisines</span>
-            <h4>{cuisines}</h4>
+            <TextDetailedViewHeader>Cuisines</TextDetailedViewHeader>
+            <Heading4>{activeRestaurant.cuisines}</Heading4>
 
-            {phone && (
+            {activeRestaurant.phone && (
               <Fragment>
-                <span>Phone number</span>
-                <h4>{phone}</h4>
+                <TextDetailedViewHeader>Phone number</TextDetailedViewHeader>
+                <Heading4>{activeRestaurant.phone}</Heading4>
               </Fragment>
             )}
-
-            <span>Opening hours</span>
-            {isOpen ? (
-              <h4>Open now</h4>
+            {/*Todo: Need to add logic for extracting today from date-timing string */}  
+            <TextDetailedViewHeader>Opening hours</TextDetailedViewHeader>
+            <OpenCloseContainer>{ activeRestaurant.timings }
+            {activeRestaurant.isOpen ? (
+              <OpenStatus> Open now</OpenStatus>
             ) : (
-              <h4>Closed now</h4>
+              <CloseStatus> Closed now</CloseStatus>
             )}
+            </OpenCloseContainer>
           </div>
         </Fragment>
       )}

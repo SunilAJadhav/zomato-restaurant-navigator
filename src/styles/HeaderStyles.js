@@ -34,8 +34,7 @@ export const GridCol = styled.div`
     max-width: 100%;
 
     @media (min-width: 46.25em){
-        flex-basis: 50%;
-        max-width: 50%;
+       flex-basis: ${props => (props.isColumnLayout ? "48%" : "16.66%")};
     }
 `;
 
@@ -62,7 +61,7 @@ export const GridCol6 = styled.div`
 `;
 
 export const MainContainer = styled.div`
-    height: calc(100% - 161px);
+ //   height: calc(100% - 161px);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

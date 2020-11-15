@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Checkbox from 'rc-checkbox';
 import PropTypes from 'prop-types';
 import {ColumnTitle, CheckboxContainer} from '../../styles/CheckboxListStyles';
-import { GridCol, CousineList} from '../../styles/HeaderStyles';
+import { GridCol, GridCol2, CousineList} from '../../styles/HeaderStyles';
 
 class CheckboxList extends Component {
 
@@ -16,7 +16,7 @@ class CheckboxList extends Component {
     const { title, list, isColumnLayout, toggleSelect } = this.props;
 
     return (
-      <GridCol>
+      <GridCol isColumnLayout = {isColumnLayout}>
         <ColumnTitle>{title}</ColumnTitle>
         {
         isColumnLayout && <CousineList>

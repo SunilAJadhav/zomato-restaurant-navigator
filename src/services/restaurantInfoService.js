@@ -32,6 +32,7 @@ export async function getCuisines() {
     hasDelivery: restaurant.has_online_delivery,
     hasBooking: restaurant.has_table_booking,
     cuisines: restaurant.cuisines,
+    timings: restaurant.timings,
     address: restaurant.location.address,
     image: restaurant.featured_image,
     price: restaurant.price_range,
